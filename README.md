@@ -4,8 +4,8 @@ Skeleton for a modular Discord bot built using TypeScript. It provides a clean s
 ### Getting Started 
 ##### Prerequisites
 
-Node.js
-npm
+* Node.js
+* npm
 
 
 ##### Installation
@@ -38,8 +38,7 @@ The bot should log "Bot is online!" and be ready to accept commands.
 #####  Project Structure
 The project structure is organized as follows:
 
-bash
-Copy code
+```bash
 discord-bot-starter-kit/
 ├── src/
 │   ├── commands/       # Command handlers
@@ -51,6 +50,7 @@ discord-bot-starter-kit/
 ├── package.json        # Project metadata and dependencies
 ├── .env                # Environment variables
 └── README.md           # Project documentation
+```
 
 ##### Developing Commands
 ###### Adding a New Command
@@ -74,27 +74,6 @@ const commandModule = await import(`./${command}`); // Import by file name
     }
 ```
 ``
-
-###### Update Command Handler
-
-No need to update the command handler. The bot dynamically imports commands based on the file name.
-
-Example Command: Ping
-Here's the ping command as an example:
-
-typescript
-Copy code
-import { Message } from 'discord.js';
-import { createEmbed } from '../visuals/embeds';
-
-export default (message: Message, args: string[]) => {
-  const embed = createEmbed('Ping Command', 'Pong!');
-  message.reply({ embeds: [embed] });
-};
-Suggested First Commands
-!hello: Replies with "Hello, world!"
-!help: Lists all available commands.
-!userinfo: Displays information about the user.
 
 ##### Data Storage
 The bot uses TypeORM for data storage. By default, it is set up to use [SQLite](https://www.sqlite.org/). You can configure the database settings in src/data/index.ts.
@@ -137,6 +116,8 @@ To develop locally, run the bot using ts-node:
 
 ```bash
 npx ts-node src/bot.ts
+## or 
+npm run dev
 ```
 
 ###### Testing
@@ -152,7 +133,10 @@ When deploying the bot to a production server, ensure you have the following:
 * Logging and error handling mechanisms in place
 
 #### Next Steps
-* Add commands
+* Add commands:
+    * !hello: Replies with "Hello, world!"
+    * !help: Lists all available commands.
+    * !userinfo: Displays information about the user.
 * Expand data set
 * Improve error handling
 * Deploy: Set up deployment scripts and a process manager
